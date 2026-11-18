@@ -1,0 +1,44 @@
+{
+  "name": "chatapp",
+  "productName": "Chatapp",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Windows inbox for several Telegram accounts",
+  "main": "src/main.js",
+  "author": "",
+  "license": "UNLICENSED",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test src/format.test.js src/store.test.js",
+    "smoke": "CHATAPP_SMOKE=1 CHATAPP_USER_DATA=./.test-tmp/smoke electron --no-sandbox .",
+    "pack:win": "electron-builder --win portable"
+  },
+  "dependencies": {
+    "prebuilt-tdlib": "0.1008070.0",
+    "tdl": "8.1.0"
+  },
+  "devDependencies": {
+    "electron": "45.3.4",
+    "electron-builder": "26.18.0"
+  },
+  "build": {
+    "appId": "com.chatapp.desktop",
+    "productName": "Chatapp",
+    "asar": false,
+    "npmRebuild": false,
+    "directories": {
+      "output": "dist"
+    },
+    "files": [
+      "src/**/*",
+      "renderer/**/*",
+      "package.json",
+      "!node_modules/@prebuilt-tdlib/darwin-*/**",
+      "!node_modules/@prebuilt-tdlib/linux-*/**"
+    ],
+    "win": {
+      "target": "portable",
+      "artifactName": "Chatapp-${version}-windows.exe"
+    }
+  }
+}

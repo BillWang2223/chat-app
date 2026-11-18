@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'self'">
+  <title>Chatapp</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="brand">Chatapp</div>
+    <nav class="nav">
+      <button type="button" data-page="chat" id="nav-chat">Chat</button>
+      <button type="button" data-page="settings" id="nav-settings">Settings</button>
+    </nav>
+    <div class="top-status" id="top-status">Starting</div>
+  </header>
+
+  <main id="chat-page"></main>
+
+  <main id="settings-page" hidden>
+    <section class="panel">
+      <h1>Telegram application</h1>
+      <p class="help">One API ID and API hash covers every account. Create an application at <a href="https://my.telegram.org" id="api-link">my.telegram.org</a>, then paste the credentials here.</p>
+      <form id="config-form" class="stack">
+        <div class="fields">
+          <label>API ID
+            <input id="api-id" name="apiId" inputmode="numeric" autocomplete="off" spellcheck="false">
+          </label>
+          <label>API hash
+            <input id="api-hash" name="apiHash" type="password" autocomplete="off" spellcheck="false">
+          </label>
+          <button type="submit">Save</button>
+        </div>
+        <p class="note" id="config-note"></p>
+        <p class="error" id="config-error"></p>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h1>Accounts</h1>
+      <form id="add-form" class="stack">
+        <div class="fields">
+          <label>Label
+            <input id="account-label" name="label" autocomplete="off" spellcheck="false" placeholder="work">
+          </label>
+          <label>Phone
+            <input id="account-phone" name="phone" autocomplete="off" spellcheck="false" placeholder="+15551234567">
+          </label>
+          <button type="submit">Add account</button>
+        </div>
+        <p class="error" id="add-error"></p>
+      </form>
+      <div id="account-list"></div>
+    </section>
+    <p class="version">Chatapp 0.1.0</p>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
